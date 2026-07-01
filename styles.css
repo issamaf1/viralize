@@ -1709,4 +1709,42 @@ footer {
   .problem-point {
     font-size: 0.95rem;
   }
+}/* ---------- CLIENTS - Logo Items (SVG) ---------- */
+.client-logo-item {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 40px;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.client-logo-item img {
+  height: 28px;
+  width: auto;
+  max-width: 100px;
+  max-height: 28px;
+  object-fit: contain;
+  transition: all 0.4s var(--ease);
+  opacity: 0.7;
+}
+
+.client-logo-item:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .client-logo-item {
+    height: 30px;
+    min-width: 60px;
+    padding: 0 12px;
+  }
+  
+  .client-logo-item img {
+    height: 20px;
+    max-width: 70px;
+    max-height: 20px;
+  }
 }
