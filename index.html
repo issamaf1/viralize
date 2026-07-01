@@ -328,68 +328,68 @@
 </a>
 
 <script>
-// ---------- MOBILE MENU TOGGLE ----------
-const toggle = document.getElementById('menuToggle');
-const navLinks = document.querySelector('.nav-links');
-const body = document.body;
+  // ---------- MOBILE MENU TOGGLE ----------
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  const body = document.body;
 
-// Create overlay
-const overlay = document.createElement('div');
-overlay.className = 'nav-overlay';
-document.body.appendChild(overlay);
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
 
-// Toggle menu on button click
-toggle.addEventListener('click', (e) => {
-  e.stopPropagation();
-  navLinks.classList.toggle('nav-open');
-  toggle.classList.toggle('active');
-  overlay.classList.toggle('active');
-});
+  // Toggle menu on button click
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('nav-open');
+    toggle.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
 
-// Close menu when clicking overlay
-overlay.addEventListener('click', () => {
-  navLinks.classList.remove('nav-open');
-  toggle.classList.remove('active');
-  overlay.classList.remove('active');
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  const isClickInsideNav = navLinks.contains(e.target);
-  const isClickOnToggle = toggle.contains(e.target);
-  
-  if (!isClickInsideNav && !isClickOnToggle) {
+  // Close menu when clicking overlay
+  overlay.addEventListener('click', () => {
     navLinks.classList.remove('nav-open');
     toggle.classList.remove('active');
     overlay.classList.remove('active');
-  }
-});
+  });
 
-// Close menu when clicking on a link
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  navLinks.classList.remove('nav-open');
-  toggle.classList.remove('active');
-  overlay.classList.remove('active');
-}));
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const isClickInsideNav = navLinks.contains(e.target);
+    const isClickOnToggle = toggle.contains(e.target);
+    
+    if (!isClickInsideNav && !isClickOnToggle) {
+      navLinks.classList.remove('nav-open');
+      toggle.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+  });
 
-// Close menu on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
+  // Close menu when clicking on a link
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     navLinks.classList.remove('nav-open');
     toggle.classList.remove('active');
     overlay.classList.remove('active');
-  }
-});
+  }));
 
-// Prevent scroll when menu is open
-const observer = new MutationObserver(() => {
-  if (navLinks.classList.contains('nav-open')) {
-    body.style.overflow = 'hidden';
-  } else {
-    body.style.overflow = '';
-  }
-});
-observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      navLinks.classList.remove('nav-open');
+      toggle.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+  });
+
+  // Prevent scroll when menu is open
+  const observer = new MutationObserver(() => {
+    if (navLinks.classList.contains('nav-open')) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+    }
+  });
+  observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
 
   // ---------- SCROLL REVEAL ----------
   const io = new IntersectionObserver((entries) => {
@@ -419,139 +419,72 @@ observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
   }, { threshold: 0.6 });
   document.querySelectorAll('.stat-num').forEach(el => statIo.observe(el));
 
-/* ---------- WHATSAPP FLOATING BUTTON - Premium ---------- */
-.wa-float {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 999;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #25D366;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  opacity: 0;
-  transform: scale(0) rotate(10deg);
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.wa-float.show {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-.wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 48px rgba(37, 211, 102, 0.5);
-}
-
-.wa-float svg {
-  width: 30px;
-  height: 30px;
-  color: #ffffff;
-  transition: transform 0.3s ease;
-}
-
-.wa-float:hover svg {
-  transform: scale(1.05);
-}
-
-/* Mobile adjustment */
-@media (max-width: 768px) {
-  .wa-float {
-    width: 52px;
-    height: 52px;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  .wa-float svg {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-/* Optional: Subtle pulse animation */
-.wa-float.show {
-  animation: waPulse 3s ease-in-out infinite;
-}
-
-@keyframes waPulse {
-  0%, 100% {
-    box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
-  }
-  50% {
-    box-shadow: 0 8px 48px rgba(37, 211, 102, 0.5);
-  }
-}
-
-// ---------- CUSTOM CURSOR ----------
-(function() {
-  // Completely disable on touch devices
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
-    return;
-  }
-
-  const cursor = document.createElement('div');
-  cursor.className = 'custom-cursor';
-  cursor.innerHTML = `
-    <div class="dot"></div>
-    <div class="ring"></div>
-  `;
-  document.body.appendChild(cursor);
-
-  let mouseX = -100;
-  let mouseY = -100;
-  let cursorX = -100;
-  let cursorY = -100;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+  // ---------- WHATSAPP FLOATING BUTTON ----------
+  const waFloatBtn = document.getElementById('waFloat');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) waFloatBtn.classList.add('show');
+    else waFloatBtn.classList.remove('show');
   });
 
-  function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
+  // ---------- CUSTOM CURSOR ----------
+  (function() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+      return;
+    }
+
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    cursor.innerHTML = `
+      <div class="dot"></div>
+      <div class="ring"></div>
+    `;
+    document.body.appendChild(cursor);
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let cursorX = -100;
+    let cursorY = -100;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, .process-step, .client-chip, .marquee-track span');
     
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-
-  const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, .process-step, .client-chip, .marquee-track span');
-  
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('hover');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+      });
     });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
+
+    document.addEventListener('mousedown', () => {
+      cursor.classList.add('click');
     });
-  });
+    document.addEventListener('mouseup', () => {
+      cursor.classList.remove('click');
+    });
 
-  document.addEventListener('mousedown', () => {
-    cursor.classList.add('click');
-  });
-  document.addEventListener('mouseup', () => {
-    cursor.classList.remove('click');
-  });
-
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-  });
-})();
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursor.style.opacity = '1';
+    });
+  })();
 </script>
 </body>
 </html>
