@@ -332,23 +332,56 @@
 </a>
 
 <script>
-  // mobile menu toggle
+  // ---------- MOBILE MENU TOGGLE ----------
   const toggle = document.getElementById('menuToggle');
   const navLinks = document.querySelector('.nav-links');
-  toggle.addEventListener('click', () => {
+  const body = document.body;
+
+  // Toggle menu on button click
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     navLinks.classList.toggle('nav-open');
   });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const isClickInsideNav = navLinks.contains(e.target);
+    const isClickOnToggle = toggle.contains(e.target);
+    
+    if (!isClickInsideNav && !isClickOnToggle) {
+      navLinks.classList.remove('nav-open');
+    }
+  });
+
+  // Close menu when clicking on a link
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     navLinks.classList.remove('nav-open');
   }));
 
-  // scroll reveal
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      navLinks.classList.remove('nav-open');
+    }
+  });
+
+  // Prevent scroll when menu is open
+  const observer = new MutationObserver(() => {
+    if (navLinks.classList.contains('nav-open')) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+    }
+  });
+  observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+
+  // ---------- SCROLL REVEAL ----------
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // count-up stat numbers
+  // ---------- COUNT-UP STATS ----------
   const statIo = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -370,7 +403,7 @@
   }, { threshold: 0.6 });
   document.querySelectorAll('.stat-num').forEach(el => statIo.observe(el));
 
-  // whatsapp floating button appears after scrolling past hero
+  // ---------- WHATSAPP FLOATING BUTTON ----------
   const waFloat = document.getElementById('waFloat');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 500) waFloat.classList.add('show');
@@ -435,6 +468,5 @@
     });
   })();
 </script>
-
 </body>
 </html>
