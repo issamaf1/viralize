@@ -823,52 +823,57 @@ section {
   }
 }
 
-/* ---------- CLIENTS - Clean Cards ---------- */
-.clients-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border-radius: var(--radius);
+/* ---------- CLIENTS - Premium Marquee ---------- */
+.clients-marquee {
   overflow: hidden;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
 }
 
-.client-card {
-  background: var(--bg-card);
-  padding: 24px;
-  text-align: center;
-  font-size: 0.75rem;
+.clients-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
+}
+
+.clients-track span {
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--fg-muted);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: all 0.4s var(--ease);
-  min-height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  white-space: nowrap;
+  transition: color 0.4s ease;
+  font-family: var(--font-body);
 }
 
-.client-card:hover {
-  background: var(--bg-card-hover);
+.clients-track span:hover {
   color: var(--fg);
-  transform: scale(1.02);
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover - optional premium touch */
+.clients-marquee:hover .clients-track {
+  animation-play-state: paused;
 }
 
 @media (max-width: 768px) {
-  .clients-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .clients-cards {
-    grid-template-columns: repeat(2, 1fr);
+  .clients-track {
+    gap: 40px;
   }
 
-  .client-card {
-    padding: 16px 12px;
-    font-size: 0.65rem;
-    min-height: 50px;
+  .clients-track span {
+    font-size: 0.85rem;
   }
 }
 /* ---------- STATS ---------- */
