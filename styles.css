@@ -823,10 +823,14 @@ section {
   }
 }
 
-/* ---------- CLIENTS - Premium Marquee ---------- */
+/* ---------- CLIENTS - Premium Marquee (Larger & Slower) ---------- */
+.clients {
+  padding: 100px 0; /* Increased top/bottom padding */
+}
+
 .clients-marquee {
   overflow: hidden;
-  padding: 20px 0;
+  padding: 40px 0; /* More vertical breathing room */
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   position: relative;
@@ -834,25 +838,46 @@ section {
 
 .clients-track {
   display: flex;
-  gap: 60px;
+  gap: 80px; /* More space between items */
   width: max-content;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 60s linear infinite; /* Slower: 60s */
 }
 
 .clients-track span {
-  font-size: 1rem;
+  font-size: 1.4rem; /* Larger text */
   font-weight: 400;
   color: var(--fg-muted);
   letter-spacing: 0.04em;
   white-space: nowrap;
   transition: color 0.4s ease;
-  font-family: var(--font-body);
 }
 
-.clients-track span:hover {
-  color: var(--fg);
+.client-logo-item {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 60px; /* Taller container */
+  min-width: 120px; /* Wider container */
+  flex-shrink: 0;
 }
 
+.client-logo-item img {
+  height: 50px; /* Bigger logos */
+  width: auto;
+  max-width: 160px; /* Wider max */
+  max-height: 50px;
+  object-fit: contain;
+  filter: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.client-logo-item:hover img {
+  opacity: 1;
+}
+
+/* Smooth, slow scroll */
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0);
@@ -868,14 +893,35 @@ section {
 }
 
 @media (max-width: 768px) {
+  .clients {
+    padding: 60px 0;
+  }
+  
+  .clients-marquee {
+    padding: 24px 0;
+  }
+  
   .clients-track {
-    gap: 40px;
+    gap: 50px;
   }
-
+  
   .clients-track span {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
   }
-}/* ---------- CLIENTS - Logo Items (Original Colors, Same Size) ---------- */
+  
+  .client-logo-item {
+    height: 45px;
+    min-width: 80px;
+    padding: 0 12px;
+  }
+  
+  .client-logo-item img {
+    height: 32px;
+    max-width: 100px;
+    max-height: 32px;
+  }
+}
+/* ---------- CLIENTS - Logo Items (Original Colors, Same Size) ---------- */
 .client-logo-item {
   display: inline-flex !important;
   align-items: center;
