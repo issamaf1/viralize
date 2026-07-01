@@ -875,35 +875,45 @@ section {
   .clients-track span {
     font-size: 0.85rem;
   }
-}/* ---------- CLIENTS - Logo Items (White → Color on Hover) ---------- */
+}/* ---------- CLIENTS - Logo Items (Original Colors, Same Size) ---------- */
 .client-logo-item {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  height: 40px;
+  min-width: 80px;
+  flex-shrink: 0;
 }
 
 .client-logo-item img {
   height: 28px;
   width: auto;
   max-width: 100px;
+  max-height: 28px;
+  min-height: 20px;
   object-fit: contain;
-  /* White by default - works for colored or black logos */
-  filter: brightness(0) invert(1);
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  opacity: 0.75;
+  transition: all 0.4s var(--ease);
+  opacity: 0.7;
 }
 
 .client-logo-item:hover img {
-  /* Original colors reveal on hover */
-  filter: none;
   opacity: 1;
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
+  .client-logo-item {
+    height: 30px;
+    min-width: 60px;
+    padding: 0 12px;
+  }
+  
   .client-logo-item img {
     height: 20px;
     max-width: 70px;
+    max-height: 20px;
+    min-height: 14px;
   }
 }
 /* ---------- STATS ---------- */
