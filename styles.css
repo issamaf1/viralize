@@ -250,7 +250,7 @@ nav {
 .wordmark {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg);
@@ -259,6 +259,12 @@ nav {
 
 .wordmark:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .wordmark {
+    font-size: 1.2rem;
+  }
 }
 
 .nav-links {
@@ -461,6 +467,7 @@ nav {
     visibility: visible;
   }
 }
+
 /* ---------- HERO ---------- */
 .hero {
   position: relative;
@@ -1058,6 +1065,66 @@ footer {
   flex-shrink: 0;
 }
 
+/* ---------- FOOTER SOCIAL SECTION ---------- */
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+
+.social-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-faint);
+  font-weight: 500;
+}
+
+.social-icons {
+  display: flex;
+  gap: 24px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease);
+  color: var(--fg-muted);
+}
+
+.social-icons a:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.social-icons svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Email link styling */
+.email-link {
+  font-weight: 600 !important;
+  color: var(--fg) !important;
+}
+
+.email-link:hover {
+  color: var(--fg) !important;
+  opacity: 0.7;
+}
+
+/* Footer bottom - simplified */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1067,6 +1134,12 @@ footer {
   padding-top: 32px;
   color: var(--fg-faint);
   font-size: 0.8rem;
+}
+
+.footer-bottom span:last-child {
+  color: var(--fg-faint);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
 }
 
 .social-row {
@@ -1114,6 +1187,22 @@ footer {
   .footer-tag {
     max-width: 100%;
   }
+
+  .footer-social {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding: 24px 0;
+  }
+
+  .social-icons {
+    gap: 16px;
+  }
+
+  .social-icons a {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ---------- WHATSAPP FLOATING BUTTON ---------- */
@@ -1152,6 +1241,7 @@ footer {
   width: 30px;
   height: 30px;
   object-fit: contain;
+  /* Your PNG is black. This makes it white. */
   filter: brightness(0) invert(1);
   transition: transform 0.3s ease;
 }
@@ -1256,6 +1346,7 @@ footer {
     transform: none;
   }
 }
+
 /* ---------- MARQUEE - Ultra Premium ---------- */
 .marquee-band {
   background: transparent;
@@ -1336,6 +1427,7 @@ footer {
     transform: translateX(-50%);
   }
 }
+
 /* ---------- CUSTOM CURSOR - The Glow ---------- */
 * {
   cursor: none !important;
@@ -1407,6 +1499,7 @@ footer {
   * { cursor: auto !important; }
   .custom-cursor { display: none !important; }
 }
+
 /* ---------- PRINCIPLES ---------- */
 .principles {
   padding: 100px 0;
@@ -1527,18 +1620,6 @@ footer {
   opacity: 1;
 }
 
-/* ---------- FOOTER UPDATE ---------- */
-.footer-est {
-  color: var(--fg-faint);
-  font-size: 0.8rem;
-  margin-top: 12px;
-}
-
-.footer-bottom span:last-child {
-  color: var(--fg-faint);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-}
 /* ---------- PROBLEM SECTION ---------- */
 .problem {
   padding: 100px 0;
@@ -1607,110 +1688,5 @@ footer {
 
   .problem-point {
     font-size: 0.95rem;
-  }
-}/* ---------- FOOTER SOCIAL SECTION ---------- */
-.footer-social {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 32px;
-}
-
-.social-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--fg-faint);
-  font-weight: 500;
-}
-
-.social-icons {
-  display: flex;
-  gap: 24px;
-}
-
-.social-icons a {
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s var(--ease);
-  color: var(--fg-muted);
-}
-
-.social-icons a:hover {
-  border-color: var(--fg);
-  color: var(--fg);
-  transform: translateY(-2px);
-  opacity: 1;
-}
-
-.social-icons svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* Email link styling */
-.email-link {
-  font-weight: 600 !important;
-  color: var(--fg) !important;
-}
-
-.email-link:hover {
-  color: var(--fg) !important;
-  opacity: 0.7;
-}
-
-/* Footer bottom - simplified */
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  color: var(--fg-faint);
-  font-size: 0.8rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-social {
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    padding: 24px 0;
-  }
-
-  .social-icons {
-    gap: 16px;
-  }
-
-  .social-icons a {
-    width: 44px;
-    height: 44px;
-  }
-}.wordmark {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 2.6rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg);
-  transition: opacity 0.3s ease;
-}
-
-.wordmark:hover {
-  opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-  .wordmark {
-    font-size: 1.2rem;
   }
 }
