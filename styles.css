@@ -875,6 +875,34 @@ section {
   .clients-track span {
     font-size: 0.85rem;
   }
+}/* ---------- CLIENTS - Logo Items ---------- */
+.client-logo-item {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.client-logo-item img {
+  height: 28px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.6);
+  transition: all 0.4s var(--ease);
+  opacity: 0.7;
+}
+
+.client-logo-item:hover img {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .client-logo-item img {
+    height: 20px;
+    max-width: 70px;
+  }
 }
 /* ---------- STATS ---------- */
 .stats {
