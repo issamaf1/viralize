@@ -410,63 +410,66 @@
     else waFloat.classList.remove('show');
   });
 
-  // ---------- CUSTOM CURSOR ----------
-  (function() {
-    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
+// ---------- CUSTOM CURSOR ----------
+(function() {
+  // Completely disable on touch devices
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+    return;
+  }
 
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    cursor.innerHTML = `
-      <div class="dot"></div>
-      <div class="ring"></div>
-    `;
-    document.body.appendChild(cursor);
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  cursor.innerHTML = `
+    <div class="dot"></div>
+    <div class="ring"></div>
+  `;
+  document.body.appendChild(cursor);
 
-    let mouseX = -100;
-    let mouseY = -100;
-    let cursorX = -100;
-    let cursorY = -100;
+  let mouseX = -100;
+  let mouseY = -100;
+  let cursorX = -100;
+  let cursorY = -100;
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
 
-    function animateCursor() {
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
-      
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, .process-step, .client-chip, .marquee-track span');
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
     
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
-      });
-    });
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
 
-    document.addEventListener('mousedown', () => {
-      cursor.classList.add('click');
+  const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, .process-step, .client-chip, .marquee-track span');
+  
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
     });
-    document.addEventListener('mouseup', () => {
-      cursor.classList.remove('click');
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
     });
+  });
 
-    document.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', () => {
-      cursor.style.opacity = '1';
-    });
-  })();
+  document.addEventListener('mousedown', () => {
+    cursor.classList.add('click');
+  });
+  document.addEventListener('mouseup', () => {
+    cursor.classList.remove('click');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+  });
+})();
 </script>
 </body>
 </html>
