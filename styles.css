@@ -823,14 +823,14 @@ section {
   }
 }
 
-/* ---------- CLIENTS - Premium Marquee (Larger & Slower) ---------- */
+/* ---------- CLIENTS - Premium Marquee (Bigger Logos) ---------- */
 .clients {
-  padding: 100px 0; /* Increased top/bottom padding */
+  padding: 120px 0;
 }
 
 .clients-marquee {
   overflow: hidden;
-  padding: 40px 0; /* More vertical breathing room */
+  padding: 50px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   position: relative;
@@ -838,13 +838,13 @@ section {
 
 .clients-track {
   display: flex;
-  gap: 80px; /* More space between items */
+  gap: 100px;
   width: max-content;
-  animation: marqueeScroll 60s linear infinite; /* Slower: 60s */
+  animation: marqueeScroll 70s linear infinite;
 }
 
 .clients-track span {
-  font-size: 1.4rem; /* Larger text */
+  font-size: 1.6rem;
   font-weight: 400;
   color: var(--fg-muted);
   letter-spacing: 0.04em;
@@ -857,16 +857,16 @@ section {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  height: 60px; /* Taller container */
-  min-width: 120px; /* Wider container */
+  height: 80px;
+  min-width: 160px;
   flex-shrink: 0;
 }
 
 .client-logo-item img {
-  height: 50px; /* Bigger logos */
+  height: 65px;
   width: auto;
-  max-width: 160px; /* Wider max */
-  max-height: 50px;
+  max-width: 200px;
+  max-height: 65px;
   object-fit: contain;
   filter: none;
   opacity: 0.8;
@@ -877,7 +877,6 @@ section {
   opacity: 1;
 }
 
-/* Smooth, slow scroll */
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0);
@@ -887,9 +886,25 @@ section {
   }
 }
 
-/* Pause on hover - optional premium touch */
 .clients-marquee:hover .clients-track {
   animation-play-state: paused;
+}
+
+@media (max-width: 1024px) {
+  .clients-track {
+    gap: 70px;
+  }
+  
+  .client-logo-item {
+    height: 65px;
+    min-width: 130px;
+  }
+  
+  .client-logo-item img {
+    height: 50px;
+    max-width: 160px;
+    max-height: 50px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -898,7 +913,7 @@ section {
   }
   
   .clients-marquee {
-    padding: 24px 0;
+    padding: 30px 0;
   }
   
   .clients-track {
@@ -910,56 +925,15 @@ section {
   }
   
   .client-logo-item {
-    height: 45px;
-    min-width: 80px;
+    height: 50px;
+    min-width: 90px;
     padding: 0 12px;
   }
   
   .client-logo-item img {
-    height: 32px;
-    max-width: 100px;
-    max-height: 32px;
-  }
-}
-/* ---------- CLIENTS - Logo Items (Original Colors, Same Size) ---------- */
-.client-logo-item {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  height: 40px;
-  min-width: 80px;
-  flex-shrink: 0;
-}
-
-.client-logo-item img {
-  height: 28px;
-  width: auto;
-  max-width: 100px;
-  max-height: 28px;
-  min-height: 20px;
-  object-fit: contain;
-  transition: all 0.4s var(--ease);
-  opacity: 0.7;
-}
-
-.client-logo-item:hover img {
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-  .client-logo-item {
-    height: 30px;
-    min-width: 60px;
-    padding: 0 12px;
-  }
-  
-  .client-logo-item img {
-    height: 20px;
-    max-width: 70px;
-    max-height: 20px;
-    min-height: 14px;
+    height: 36px;
+    max-width: 110px;
+    max-height: 36px;
   }
 }
 /* ---------- STATS ---------- */
