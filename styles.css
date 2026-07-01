@@ -1116,7 +1116,7 @@ footer {
   }
 }
 
-/* ---------- WHATSAPP FLOATING ---------- */
+/* ---------- WHATSAPP FLOATING BUTTON ---------- */
 .wa-float {
   position: fixed;
   bottom: 28px;
@@ -1126,30 +1126,38 @@ footer {
   height: 60px;
   border-radius: 50%;
   background: #25D366;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 32px rgba(37, 211, 102, 0.3);
-  transition: all 0.4s var(--ease);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   opacity: 0;
-  transform: scale(0);
+  transform: scale(0) rotate(10deg);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .wa-float.show {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) rotate(0deg);
 }
 
 .wa-float:hover {
-  transform: scale(1.05);
-  opacity: 1;
-  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4);
+  transform: scale(1.08);
+  box-shadow: 0 12px 48px rgba(37, 211, 102, 0.5);
 }
 
-.wa-float svg {
-  width: 28px;
-  height: 28px;
+.wa-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.wa-float:hover .wa-icon {
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -1160,7 +1168,7 @@ footer {
     right: 20px;
   }
 
-  .wa-float svg {
+  .wa-icon {
     width: 24px;
     height: 24px;
   }
