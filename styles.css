@@ -1769,3 +1769,118 @@ footer {
     max-height: 28px;
   }
 }
+/* ---------- CLIENTS - Premium Marquee (Bigger Logos) ---------- */
+.clients {
+  padding: 120px 0;
+}
+
+.clients-marquee {
+  overflow: hidden;
+  padding: 60px 0;  /* Increased vertical padding */
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.clients-track {
+  display: flex;
+  gap: 120px;  /* More space between items */
+  width: max-content;
+  animation: marqueeScroll 70s linear infinite;
+}
+
+.clients-track span {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--fg-muted);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color 0.4s ease;
+}
+
+.client-logo-item {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  height: 100px;  /* Taller container */
+  min-width: 180px;  /* Wider container */
+  flex-shrink: 0;
+}
+
+.client-logo-item img {
+  height: 80px;  /* Much bigger logos */
+  width: auto;
+  max-width: 240px;  /* Wider max */
+  max-height: 80px;
+  object-fit: contain;
+  filter: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.client-logo-item:hover img {
+  opacity: 1;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.clients-marquee:hover .clients-track {
+  animation-play-state: paused;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .clients-track {
+    gap: 80px;
+  }
+  
+  .client-logo-item {
+    height: 80px;
+    min-width: 140px;
+  }
+  
+  .client-logo-item img {
+    height: 60px;
+    max-width: 180px;
+    max-height: 60px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .clients {
+    padding: 60px 0;
+  }
+  
+  .clients-marquee {
+    padding: 30px 0;
+  }
+  
+  .clients-track {
+    gap: 50px;
+  }
+  
+  .clients-track span {
+    font-size: 1.1rem;
+  }
+  
+  .client-logo-item {
+    height: 60px;
+    min-width: 100px;
+    padding: 0 12px;
+  }
+  
+  .client-logo-item img {
+    height: 45px;
+    max-width: 130px;
+    max-height: 45px;
+  }
+}
